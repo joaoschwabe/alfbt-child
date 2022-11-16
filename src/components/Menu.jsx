@@ -83,12 +83,12 @@ const estilo = StyleSheet.create({
         resizeMode: "contain",
     },
     icon1: {
-        marginVertical: 20,
-        marginLeft: 15,
+        paddingVertical: 20,
+        paddingLeft: 15,
     },
     icon2: {
-        marginVertical: 20,
-        marginRight: 15,
+        paddingVertical: 20,
+        paddingRight: 15,
     },
 });
 
