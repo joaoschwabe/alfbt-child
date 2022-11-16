@@ -10,30 +10,22 @@ import {
 
 import Menu from "../../../components/Menu";
 import estilos from "../../../globas/styles/index";
-import imagem from "../../../components/assets/silabas/images/exerc1.png"
+import imagem from "../../../components/assets/silabas/images/exerc1.png";
 
-import { printAsync, printToFileAsync } from "expo-print";
+import { printAsync } from "expo-print";
+
+import html from "../../../components/assets/silabas/html/exerc1";
 
 const SilabasExercicio1 = () => {
-    const img = require("../../../components/assets/silabas/images/exerc1.png");
     const imprimir = async () => {
-
-        const { uri } = printToFileAsync({
-            imagem,
-        })
-
-        console.warn("imprimir");
-        await printAsync({ uri });
+        await printAsync({ html: html });
     };
 
     return (
         <ScrollView style={styles.container}>
             <Menu>Silabas: Exercicio 1</Menu>
             <View style={styles.view}>
-                <Image
-                    style={styles.img}
-                    source={require("../../../components/assets/silabas/images/exerc1.png")}
-                />
+                <Image style={styles.img} source={imagem} />
                 <TouchableOpacity style={styles.btn} onPress={imprimir}>
                     <Text style={styles.txt}>Imprimir</Text>
                 </TouchableOpacity>
