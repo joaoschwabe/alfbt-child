@@ -8,21 +8,22 @@ import {
     View,
 } from "react-native";
 
-import Menu from "../../../components/Menu";
-import estilos from "../../../globas/styles/index";
-import imagem from "../../../components/assets/silabas/images/exerc2.png";
+import Menu from "../../../../components/Menu";
+import estilos from "../../../../globas/styles/index";
+import imagem from "../../../../components/assets/alfabeto/images/exerc2.png";
 
 import { printAsync } from "expo-print";
 
-import html from "../../../components/assets/silabas/html/exerc2";
+// import html from "../../../components/assets/alfabeto/html/exerc1";
 
-export default function SilabaExercicio2() {
+const Atividade2_26letras = () => {
     const imprimir = async () => {
-        await printAsync({ html: html });
+        await printAsync({ html: "<center><h1>nao disponivel</h1></center>" });
     };
+
     return (
         <ScrollView style={styles.container}>
-            <Menu>Silabas: Exercicio 2</Menu>
+            <Menu>As 26 Letras: Atividade 2</Menu>
             <View style={styles.view}>
                 <Image style={styles.img} source={imagem} />
                 <TouchableOpacity style={styles.btn} onPress={imprimir}>
@@ -31,7 +32,9 @@ export default function SilabaExercicio2() {
             </View>
         </ScrollView>
     );
-}
+};
+
+export default Atividade2_26letras;
 
 const styles = StyleSheet.create({
     container: {

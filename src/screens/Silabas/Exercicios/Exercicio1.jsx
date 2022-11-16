@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         width: Dimensions.get("window").width * 0.8,
         height: Dimensions.get("window").height * 0.6,
         resizeMode: "contain",
-        padding: 0,
+        marginVertical: 20,
         margin: 0,
     },
     btn: {

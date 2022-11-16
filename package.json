@@ -2,7 +2,7 @@
   "name": "alfbt-child",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start --dev-client",
+    "start": "npx expo start",
     "android": "npx expo run:android",
     "ios": "npx expo run:ios",
     "web": "npx expo start --web"

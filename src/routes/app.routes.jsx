@@ -11,6 +11,9 @@ import As26Letras from "../screens/Alfabeto/As26letras";
 import Atividades26letras from "../screens/Alfabeto/As26letras/atividades";
 import SilabasExercicio1 from "../screens/Silabas/Exercicios/Exercicio1";
 import SilabaExercicio2 from "../screens/Silabas/Exercicios/Exercicio2";
+import Atividade1_26letras from "../screens/Alfabeto/As26letras/atividades/Atividade1";
+import Atividade2_26letras from "../screens/Alfabeto/As26letras/atividades/Atividade2";
+import Atividade3_26letras from "../screens/Alfabeto/As26letras/atividades/Atividade3";
 
 const AppStack = createNativeStackNavigator();
 
@@ -42,6 +45,18 @@ const AppRoutes = () => (
             <AppStack.Screen
                 name="Atividades 26 Letras"
                 component={Atividades26letras}
+            />
+            <AppStack.Screen
+                name="Atividade 1 26 Letras"
+                component={Atividade1_26letras}
+            />
+            <AppStack.Screen
+                name="Atividade 2 26 Letras"
+                component={Atividade2_26letras}
+            />
+            <AppStack.Screen
+                name="Atividade 3 26 Letras"
+                component={Atividade3_26letras}
             />
 
             <AppStack.Screen name="Silabas" component={Silabas} />

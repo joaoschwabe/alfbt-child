@@ -9,8 +9,9 @@ export default Atividades26letras = () => {
         <SafeAreaView style={styles.view}>
             <ScrollView>
                 <Menu>As 26 letras: Atividades</Menu>
-                <CardG tela={"As 26 Letras Atividade1"}>Atividade 1</CardG>
-                <CardG tela={"As 26 Letras Atividade2"}>Atividade 2</CardG>
+                <CardG tela={"Atividade 1 26 Letras"}>Atividade 1</CardG>
+                <CardG tela={"Atividade 2 26 Letras"}>Atividade 2</CardG>
+                <CardG tela={"Atividade 3 26 Letras"}>Atividade 3</CardG>
             </ScrollView>
         </SafeAreaView>
     );
