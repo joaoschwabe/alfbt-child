@@ -1,4 +1,3 @@
-import 'expo-dev-client';
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import {
@@ -22,7 +21,6 @@ export default App = () => {
     if (!fontsLoaded) {
         return null;
     }
-
     return (
         <NavigationContainer styles={styles.view}>
             <Routes />
