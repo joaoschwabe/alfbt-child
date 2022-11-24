@@ -54,8 +54,6 @@ const estilo = StyleSheet.create({
     menu: {
         paddingTop: 10,
         backgroundColor: estilos.colors.primary,
-        borderBottomEndRadius: 15,
-        borderBottomStartRadius: 15,
     },
     texto: {
         color: estilos.colors.secondary,

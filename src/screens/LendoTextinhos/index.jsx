@@ -9,9 +9,9 @@ export default LendoTextinhos = () => {
         <SafeAreaView style={styles.view}>
             <ScrollView>
                 <Menu>Lendo Textinhos</Menu>
-                <CardG>A árvore da montanha</CardG>
-                <CardG>No campo do Joaquim</CardG>
-                <CardG>A galinha melada</CardG>
+                <CardG tela="lendo textinhos texto 1">A árvore da montanha</CardG>
+                <CardG tela="lendo textinhos texto 2">No campo do Joaquim</CardG>
+                <CardG tela="lendo textinhos texto 3">A galinha melada</CardG>
             </ScrollView>
         </SafeAreaView>
     );

@@ -13,6 +13,7 @@ import Menu from "../components/Menu";
 import CardG from "../components/CardG";
 import CardP from "../components/CardP";
 import { getRealm } from "../databases/realm";
+import Titulo from "../components/Titulo";
 
 function Home() {
     const navigation = useNavigation();
@@ -64,19 +65,40 @@ function Home() {
                 handleIndicatorStyle={{ backgroundColor: estilos.colors.text }}
             >
                 <BottomSheetScrollView style={styles.contentContainer}>
-                    {atvs?.map((atv) => (
-                        <TouchableOpacity
-                            key={atv._id}
-                            onPress={() => navigation.navigate(atv.nome)}
-                        >
-                            <Text>{atv.descricao}</Text>
-                        </TouchableOpacity>
-                    ))}
-                    {atvs?.length === 0 ? (
-                        <Text style={styles.text}>
-                            Nenhuma atividade concluída
-                        </Text>
-                    ) : null}
+                    <Text
+                        style={{
+                            fontFamily: estilos.fonts.title,
+                            fontSize: 17,
+                            textAlign: "center",
+                        }}
+                    >
+                        Atividades Concluidas
+                    </Text>
+                    <Text
+                        style={{
+                            textAlign: "center",
+                            fontFamily: estilos.fonts.text,
+                            bottom: 0,
+                            fontSize: 12
+                        }}
+                    >
+                        Clique nas atividades para ser redirecionado diretamente
+                    </Text>
+                    <ScrollView>
+                        {atvs?.map((atv) => (
+                            <TouchableOpacity
+                                key={atv._id}
+                                onPress={() => navigation.navigate(atv.nome)}
+                            >
+                                <Text style={styles.atvs}>{atv.descricao}</Text>
+                            </TouchableOpacity>
+                        ))}
+                        {atvs?.length === 0 ? (
+                            <Text style={styles.text}>
+                                Nenhuma atividade concluída
+                            </Text>
+                        ) : null}
+                    </ScrollView>
                 </BottomSheetScrollView>
             </BottomSheet>
         </SafeAreaView>
@@ -93,12 +115,19 @@ const styles = StyleSheet.create({
         flexWrap: "wrap",
     },
     contentContainer: {
-        backgroundColor: "#c4c4c4",
-        padding: 16,
+        backgroundColor: "#fff",
+        padding: 15,
+        margin: 10,
+        borderRadius: 10,
     },
     background: {
         backgroundColor: "#c4c4c4",
         borderColor: estilos.colors.text,
+    },
+    atvs: {
+        fontFamily: estilos.fonts.text,
+        fontSize: 17,
+        marginVertical: 5,
     },
 });
 

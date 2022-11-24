@@ -14,6 +14,10 @@ import SilabaExercicio2 from "../screens/Silabas/Exercicios/Exercicio2";
 import Atividade1_26letras from "../screens/Alfabeto/As26letras/atividades/Atividade1";
 import Atividade2_26letras from "../screens/Alfabeto/As26letras/atividades/Atividade2";
 import Atividade3_26letras from "../screens/Alfabeto/As26letras/atividades/Atividade3";
+import CamScreen from "../screens/CamScreen";
+import Texto1 from "../screens/LendoTextinhos/textos/Texto1";
+import Texto3 from "../screens/LendoTextinhos/textos/Texto3";
+import Texto2 from "../screens/LendoTextinhos/textos/Texto2";
 
 const AppStack = createNativeStackNavigator();
 
@@ -32,6 +36,18 @@ const AppRoutes = () => (
             <AppStack.Screen
                 name="Lendo textinhos"
                 component={LendoTextinhos}
+            />
+            <AppStack.Screen
+                name="lendo textinhos texto 1"
+                component={Texto1}
+            />
+            <AppStack.Screen
+                name="lendo textinhos texto 2"
+                component={Texto2}
+            />
+            <AppStack.Screen
+                name="lendo textinhos texto 3"
+                component={Texto3}
             />
             <AppStack.Screen
                 name="Atividades Complementares"
@@ -68,6 +84,7 @@ const AppRoutes = () => (
                 name="silabas exerc 2"
                 component={SilabaExercicio2}
             />
+            <AppStack.Screen name="camera" component={CamScreen} />
         </AppStack.Navigator>
     </>
 );

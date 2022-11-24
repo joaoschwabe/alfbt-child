@@ -1,35 +1,31 @@
-import { useEffect, useState } from "react";
 import {
-    Dimensions,
-    Image,
-    ScrollView,
-    StyleSheet,
+    View,
     Text,
     TouchableOpacity,
-    View,
+    Image,
+    StyleSheet,
+    Dimensions,
 } from "react-native";
+import React, { useEffect, useState } from "react";
+import Menu from "../../../components/Menu";
 import uuid from "react-native-uuid";
-import * as share from "expo-sharing";
+import { useNavigation } from "@react-navigation/native";
 import { Asset } from "expo-asset";
 import * as FileSystem from "expo-file-system";
-import { useNavigation } from "@react-navigation/native";
-import * as MediaLibrary from "expo-media-library";
+import { Audio } from "expo-av";
 
-import Menu from "../../../../components/Menu";
-import estilos from "../../../../globas/styles/index";
-import imagem from "../../../../components/assets/alfabeto/images/exerc2.png";
+import texto1 from "../images/texto1.png";
+import { getRealm } from "../../../databases/realm";
+import * as share from "expo-sharing";
 
-// import html from "../../../components/assets/alfabeto/html/exerc1";
-
-const Atividade2_26letras = () => {
-    const [permissionResponse, requestPermission] =
-        MediaLibrary.usePermissions();
+export default function Texto1() {
     const [concluido, setConcluido] = useState(false);
-    const navigation = useNavigation();
+    const [sound, setSound] = useState();
+    const [isPlaying, setIsPlaying] = useState(false);
 
-    const atvNome = "Atividade 2 26 Letras",
-        atvDesc = "Atividade 2 de sílabas";
-    albumName = "ALFBT Child 26 Letras Atividade 2";
+    const navigation = useNavigation();
+    const atvNome = "lendo textinhos texto 1",
+        atvDesc = "A arvore da montanha";
 
     async function fetchData() {
         try {
@@ -83,29 +79,78 @@ const Atividade2_26letras = () => {
         }
         setConcluido(false);
     }
+
     useEffect(() => {
-        requestPermission();
+        Audio.setIsEnabledAsync(true);
         fetchData();
+        return sound
+            ? () => {
+                  console.log("Unloading Sound");
+                  sound.unloadAsync();
+              }
+            : undefined;
     }, []);
 
     const compartilhar = async () => {
-        // const [pdf] = await Asset.loadAsync(require("../pdfs/exerc1.pdf"));
-        // console.log(pdf.localUri);
-        // console.log(pdf.name);
-        // FileSystem.downloadAsync(
-        //     pdf.uri,
-        //     FileSystem.documentDirectory + atvDesc + ".pdf"
-        // ).then(({ uri }) => {
-        //     console.log("Finished downloading to ", uri);
-        //     share.shareAsync(uri);
-        // });
+        const [pdf] = await Asset.loadAsync(require("../pdfs/texto1.pdf"));
+        FileSystem.downloadAsync(
+            pdf.uri,
+            FileSystem.documentDirectory + atvDesc + ".pdf"
+        ).then(({ uri }) => {
+            console.log("Finished downloading to ", uri);
+            share.shareAsync(uri);
+        });
     };
 
+    async function playSound() {
+        console.log("Loading Sound");
+        const { sound } = await Audio.Sound.createAsync(
+            require("../audio/texto1.mp3")
+        );
+        setSound(sound);
+
+        console.log("Playing Sound");
+        await sound.playAsync();
+        setIsPlaying(true);
+        // await sound.unloadAsync();
+    }
+
+    async function stopSound() {
+        console.log("Stopping Sound");
+        await sound.stopAsync();
+        setIsPlaying(false);
+    }
+
+    async function pauseSound() {
+        console.log("Pausing Sound");
+        await sound.pauseAsync();
+        setIsPlaying(false);
+    }
+
     return (
-        <ScrollView style={styles.container}>
-            <Menu>As 26 Letras: Atividade 2</Menu>
+        <View style={styles.container}>
+            <Menu>A árvore da Montanha</Menu>
             <View style={styles.view}>
-                <Image style={styles.img} source={imagem} />
+                <Image source={texto1} style={styles.img} />
+
+                {
+                    isPlaying ? (
+                        <TouchableOpacity
+                            style={styles.btn}
+                            onPress={pauseSound}
+                        >
+                            <Text style={styles.txt}>Parar</Text>
+                        </TouchableOpacity>
+                    ) : (
+                        <TouchableOpacity
+                            style={styles.btn}
+                            onPress={playSound}
+                        >
+                            <Text style={styles.txt}>Ouvir</Text>
+                        </TouchableOpacity>
+                    )
+                    // <Button title="Ouvir" onPress={playSound} />
+                }
                 <TouchableOpacity style={styles.btn} onPress={compartilhar}>
                     <Text style={styles.txt}>Compartilhar</Text>
                 </TouchableOpacity>
@@ -119,28 +164,10 @@ const Atividade2_26letras = () => {
                             : "Marcar como concluido"}
                     </Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                    style={styles.btn}
-                    onPress={() =>
-                        navigation.navigate("camera", {
-                            albumName,
-                            nome: atvDesc,
-                        })
-                    }
-                >
-                    <Text style={styles.txtConcl}>
-                        Tirar foto das atividades dos alunos
-                    </Text>
-                </TouchableOpacity>
-                <Text style={{ fontFamily: estilos.fonts.text }}>
-                    *As fotos só podem ser visualizadas na galeria
-                </Text>
             </View>
-        </ScrollView>
+        </View>
     );
-};
-
-export default Atividade2_26letras;
+}
 
 const styles = StyleSheet.create({
     container: {

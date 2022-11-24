@@ -1,3 +1,5 @@
+import "expo-dev-client";
+
 import { StyleSheet } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import {
