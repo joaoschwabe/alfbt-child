@@ -18,8 +18,7 @@ import * as MediaLibrary from "expo-media-library";
 import Menu from "../../../../components/Menu";
 import estilos from "../../../../globas/styles/index";
 import imagem from "../../../../components/assets/alfabeto/images/exerc3.png";
-
-// import html from "../../../components/assets/alfabeto/html/exerc1";
+import { getRealm } from "../../../../databases/realm";
 
 const Atividade3_26letras = () => {
     const [permissionResponse, requestPermission] =
@@ -28,7 +27,7 @@ const Atividade3_26letras = () => {
     const navigation = useNavigation();
 
     const atvNome = "Atividade 3 26 Letras",
-        atvDesc = "Atividade 3 de sílabas",
+        atvDesc = "Atividade 3 das 26 Letras";
         albumName = "ALFBT Child 26 Letras Atividade 1";
     async function fetchData() {
         try {
@@ -89,16 +88,16 @@ const Atividade3_26letras = () => {
     }, []);
 
     const compartilhar = async () => {
-        // const [pdf] = await Asset.loadAsync(require("../pdfs/exerc1.pdf"));
-        // console.log(pdf.localUri);
-        // console.log(pdf.name);
-        // FileSystem.downloadAsync(
-        //     pdf.uri,
-        //     FileSystem.documentDirectory + atvDesc + ".pdf"
-        // ).then(({ uri }) => {
-        //     console.log("Finished downloading to ", uri);
-        //     share.shareAsync(uri);
-        // });
+        const [pdf] = await Asset.loadAsync(require("./pdfs/exerc3.pdf"));
+        console.log(pdf.localUri);
+        console.log(pdf.name);
+        FileSystem.downloadAsync(
+            pdf.uri,
+            FileSystem.documentDirectory + atvDesc + ".pdf"
+        ).then(({ uri }) => {
+            console.log("Finished downloading to ", uri);
+            share.shareAsync(uri);
+        });
     };
     return (
         <ScrollView style={styles.container}>

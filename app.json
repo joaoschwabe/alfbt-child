@@ -1,46 +1,50 @@
 {
-  "expo": {
-    "name": "ALFBT Child",
-    "slug": "alfbt-child",
-    "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "extra": {
-      "eas": {
-        "projectId": "2a4cdf7f-ca2e-48d0-8151-4faff145d976"
-      }
-    },
-    "android": {
-      "package": "com.alfbtchild",
-      "permissions": [
-        "android.permission.READ_EXTERNAL_STORAGE",
-        "android.permission.WRITE_EXTERNAL_STORAGE",
-        "android.permission.ACCESS_MEDIA_LOCATION"
-      ],
-      "runtimeVersion": "1.0.0"
-    },
-    "plugins": [
-      [
-        "expo-media-library",
-        {
-          "photosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
-          "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
-          "isAccessMediaLocationEnabled": true
+    "expo": {
+        "name": "ALFBT Child",
+        "slug": "alfbt-child",
+        "version": "1.0.1",
+        "icon": "./assets/icon.png",
+        "splash": {
+            "image": "./assets/splash.png",
+            "resizeMode": "contain",
+            "backgroundColor": "#90b1db"
+        },
+        "assetBundlePatterns": ["**/*"],
+        "extra": {
+            "eas": {
+                "projectId": "2a4cdf7f-ca2e-48d0-8151-4faff145d976"
+            }
+        },
+        "android": {
+            "package": "com.alfbtchild",
+            "permissions": [
+                "android.permission.READ_EXTERNAL_STORAGE",
+                "android.permission.WRITE_EXTERNAL_STORAGE",
+                "android.permission.ACCESS_MEDIA_LOCATION"
+            ],
+            "runtimeVersion": "1.0.0"
+        },
+        "plugins": [
+            [
+                "expo-media-library",
+                {
+                    "photosPermission": "Allow $(PRODUCT_NAME) to access your photos.",
+                    "savePhotosPermission": "Allow $(PRODUCT_NAME) to save photos.",
+                    "isAccessMediaLocationEnabled": true
+                }
+            ]
+        ],
+        "updates": {
+            "url": "https://u.expo.dev/2a4cdf7f-ca2e-48d0-8151-4faff145d976"
+        },
+        "ios": {
+            "infoPlist": {
+                "NSPhotoLibraryUsageDescription": "Allow $(PRODUCT_NAME) to access your photos.",
+                "NSPhotoLibraryAddUsageDescription": "Allow $(PRODUCT_NAME) to save photos."
+            },
+            "runtimeVersion": {
+                "policy": "sdkVersion"
+            }
         }
-      ]
-    ],
-    "updates": {
-      "url": "https://u.expo.dev/2a4cdf7f-ca2e-48d0-8151-4faff145d976"
-    },
-    "ios": {
-      "infoPlist": {
-        "NSPhotoLibraryUsageDescription": "Allow $(PRODUCT_NAME) to access your photos.",
-        "NSPhotoLibraryAddUsageDescription": "Allow $(PRODUCT_NAME) to save photos."
-      },
-      "runtimeVersion": {
-        "policy": "sdkVersion"
-      }
     }
-  }
 }
